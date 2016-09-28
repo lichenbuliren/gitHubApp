@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
+
+import { User, UserService } from '../../shared/user/';
 
 /*
   Generated class for the LoginPage page.
@@ -9,11 +11,22 @@ import { NavController } from 'ionic-angular';
 */
 @Component({
   templateUrl: 'build/pages/login/login.html',
+  providers: [UserService]
 })
 export class LoginPage {
+  @Input()
+  user: User = new User();
 
-  constructor(private navCtrl: NavController) {
+  constructor(private navCtrl: NavController,
+    private userService: UserService) {
 
   }
 
+  login() {
+    this.userService.login(this.user).subscribe((data) => {
+      console.log(data);
+    },(error) => {
+      console.log(error);
+    });
+  }
 }

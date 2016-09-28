@@ -16,16 +16,16 @@
       <ion-label>
         <ion-icon primary name="person"></ion-icon>
       </ion-label>
-      <ion-input type="text" name="account" value="" placeholder="account"></ion-input>
+      <ion-input type="text" [(ngModel)]="user.account" value="" placeholder="account"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>
         <ion-icon primary name="lock"></ion-icon>
       </ion-label>
-      <ion-input type="password" name="password" value="" placeholder="password"></ion-input>
+      <ion-input type="password" [(ngModel)]="user.password" value="" placeholder="password"></ion-input>
     </ion-item>
     <div padding-vertical>
-      <button block type="submit">Login</button>
+      <button block (tap)="login()">Login</button>
     </div>
   </ion-list>
 </ion-content>
